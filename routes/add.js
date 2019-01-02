@@ -8,18 +8,18 @@ var connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
     password : '',
-    database : 'test'
+    database : 'sys'
 });
 //执行创建连接 
 connection.connect();
 //SQL语句
-var  sql = 'SELECT * FROM students';
-var  addSql = 'INSERT INTO students(id,name) VALUES(?,?)';
+
+var  addSql = 'INSERT INTO user(name,password) VALUES(?,?)';
 
 router.post('/', function(req, res, next) {
     //解析请求参数
-    var params = URL.parse(req.url, true).query;
-    var addSqlParams = [req.body.id, req.body.name];
+    var  sql = 'SELECT * FROM user WHERE name = "'+ req.body.name +'"';
+    var addSqlParams = [req.body.name, req.body.password];
     //增
     connection.query(addSql,addSqlParams,function (err, result) {
         if(err){

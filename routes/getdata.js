@@ -8,18 +8,19 @@ var connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
     password : '',
-    database : 'test'
+    database : 'sys'
 });
 //执行创建连接 
 connection.connect();
 //SQL语句
 
-router.get('/', function(req, res, next) {
+router.post('/', function(req, res, next) {
     //解析请求参数
-    var params = URL.parse(req.url, true).query;
-    var sql = "SELECT * FROM students WHERE name = '" + params.name + "'";
+    let name = req.body.name;
+    let password = req.body.password;
+    var sql = "SELECT * FROM user WHERE name = '" + name + "' and password = '" + password +"' ";
     //查
-    connection.query(sql,function (err, result) {
+    connection.query(sql, function (err, result) {
         if(err){
           console.log('[SELECT ERROR] - ',sql);
           return;

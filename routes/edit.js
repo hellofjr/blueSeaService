@@ -8,19 +8,19 @@ var connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
     password : '',
-    database : 'test'
+    database : 'sys'
 });
 //执行创建连接 
 connection.connect();
 //SQL语句
-var  sql = 'SELECT * FROM students';
+var  sql = 'SELECT * FROM user';
 
 router.post('/', function(req, res, next) {
     //解析请求参数
     var params = URL.parse(req.url, true).query;
-    let id = req.body.id;
     let name = req.body.name;
-    let editSql = "UPDATE students SET name = '"+ name + "' WHERE id = " + id;
+    // let password = req.body.password;
+    let editSql = "UPDATE user SET name = '"+ name;
     //edit
     connection.query(editSql,function (err, result) {
         if(err){
