@@ -8,10 +8,6 @@ var bodyParser = require('body-parser');
 // 路由信息（接口地址），存放在routes的根目录
 var index = require('./routes/index');
 var users = require('./routes/users');
-var add = require('./routes/add');
-var edit = require('./routes/edit');
-var del = require('./routes/del');
-var getData = require('./routes/getdata');
 
 var app = express();
 
@@ -37,12 +33,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //配置路由，（'自定义路径'，上面设置的接口地址）
-app.use('/', index);
 app.use('/users', users);
-app.use('/add', add);
-app.use('/edit', edit);
-app.use('/del', del);
-app.use('/getdata', getData);
+app.use('/', index);
 
 
 // catch 404 and forward to error handler

@@ -1,13 +1,11 @@
 $(function(){ 
     $('#getData').click(function (){
         let nameV = $("#name").val();
-        let pwdV = $("#password").val();
         $.ajax({
-            type:'post',
-            url:'http://localhost:2000/getdata',
+            type:'get',
+            url:'http://localhost:2000/users/userValid',
             data: {
                 name: nameV,
-                password: pwdV
             },
             success:function(data){
                 console.log(data);
@@ -22,7 +20,7 @@ $(function(){
         let pwdV = $("#password").val();
         $.ajax({
             type:'post',
-            url:'http://localhost:2000/add',
+            url:'http://localhost:2000/users/add',
             data: {
                 name: nameV,
                 password: pwdV
@@ -39,7 +37,7 @@ $(function(){
         let nameV = $("#name").val();
         $.ajax({
             type:'get',
-            url:'http://localhost:2000/del',
+            url:'http://localhost:2000/users/del',
             data: {
                 name: nameV,
             },
@@ -56,7 +54,7 @@ $(function(){
         let pwdV = $("#password").val();
         $.ajax({
             type:'post',
-            url:'http://localhost:2000/edit',
+            url:'http://localhost:2000/users/edit',
             data: {
                 name: nameV,
                 password: pwdV
