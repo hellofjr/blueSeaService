@@ -62,6 +62,7 @@ router.post('/add', function (req, res, next) {
   checkQuery.execQuery();
 });
 
+/** Delete user */
 router.get('/delete', function (req, res, next) {
 
   //解析请求参数
@@ -81,6 +82,7 @@ router.get('/delete', function (req, res, next) {
   delQuery.execQuery();
 });
 
+/** Edit user */
 router.post('/edit', function(req, res, next) {
   //解析请求参数
   let name = req.body.name;
